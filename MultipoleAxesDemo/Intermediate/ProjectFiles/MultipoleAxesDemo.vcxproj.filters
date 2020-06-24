@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\MultipoleAxesDemo.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{76AB7D5A-086A-4FC5-A65A-ADAE06308212}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\MultipoleAxesDemo.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\MultipoleAxesDemoEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{225CF657-8FBF-4639-A0FA-810F96B53518}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\MultipoleAxesDemo">
+      <UniqueIdentifier>{D94AC78C-1189-4F8F-BAD5-3A65527F2D40}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\MultipoleAxesDemo\MultipoleAxesActorComponent.cpp">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MultipoleAxesDemo\MultipoleAxesActorComponent.h">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\MultipoleAxesDemo\MultipoleAxesDemo.Build.cs">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\MultipoleAxesDemo\MultipoleAxesDemo.cpp">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MultipoleAxesDemo\MultipoleAxesDemo.h">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MultipoleAxesDemo\MultipoleDemoActor.cpp">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MultipoleAxesDemo\MultipoleDemoActor.h">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

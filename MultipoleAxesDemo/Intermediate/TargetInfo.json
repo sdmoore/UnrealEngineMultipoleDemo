@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MultipoleAxesDemo",
+			"Path": "C:\\Users\\sdmoo\\OneDrive\\Documents\\GitHub\\UnrealEngineMultipoleDemo\\MultipoleAxesDemo\\Source\\MultipoleAxesDemo.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MultipoleAxesDemoEditor",
+			"Path": "C:\\Users\\sdmoo\\OneDrive\\Documents\\GitHub\\UnrealEngineMultipoleDemo\\MultipoleAxesDemo\\Source\\MultipoleAxesDemoEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

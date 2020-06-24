@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\sdmoo\\OneDrive\\Documents\\GitHub\\UnrealEngineMultipoleDemo\\MultipoleAxesDemo\\Source\\MultipoleAxesDemo\\MultipoleAxesDemo.Build.cs",
+		"C:\\Users\\sdmoo\\OneDrive\\Documents\\GitHub\\UnrealEngineMultipoleDemo\\MultipoleAxesDemo\\Source\\MultipoleAxesDemo.Target.cs",
+		"C:\\Users\\sdmoo\\OneDrive\\Documents\\GitHub\\UnrealEngineMultipoleDemo\\MultipoleAxesDemo\\Source\\MultipoleAxesDemoEditor.Target.cs"
+	],
+	"EngineVersion": "4.25.1"
+}
