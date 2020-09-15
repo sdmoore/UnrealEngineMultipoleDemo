@@ -48,4 +48,14 @@
       <Filter>Source\MultipoleAxesDemo</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\MultipoleAxesDemo\MutlipoleGroupActorComponent.h">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\MultipoleAxesDemo\MutlipoleGroupActorComponent.cpp">
+      <Filter>Source\MultipoleAxesDemo</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

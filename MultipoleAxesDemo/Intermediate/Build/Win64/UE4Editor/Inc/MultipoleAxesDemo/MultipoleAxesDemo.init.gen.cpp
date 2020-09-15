@@ -21,8 +21,8 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesDemo_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x1D14EA8B,
-				0x95E63945,
+				0xABECE93E,
+				0x7495F6BF,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

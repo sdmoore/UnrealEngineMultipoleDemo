@@ -1,0 +1,3 @@
+C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Development\MultipoleAxesDemo\Definitions.MultipoleAxesDemo.h
+C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Source\MultipoleAxesDemo\MutlipoleGroupActorComponent.h
+C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Inc\MultipoleAxesDemo\MutlipoleGroupActorComponent.generated.h

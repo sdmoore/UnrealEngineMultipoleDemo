@@ -3,16 +3,6 @@
 
 #include "MultipoleAxesActorComponent.h"
 
-// Sets default values for this component's properties
-//UMultipoleAxesActorComponent::UMultipoleAxesActorComponent()
-//{
-//	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-//	// off to improve performance if you don't need them.
-//	PrimaryComponentTick.bCanEverTick = true;
-//
-//	// ...
-//}
-// Called when the game starts
 void UMultipoleAxesActorComponent::BeginPlay()
 {
 	Super::BeginPlay();
@@ -30,65 +20,6 @@ void UMultipoleAxesActorComponent::TickComponent(float DeltaTime, ELevelTick Tic
 	// ...
 }
 
-
-//////// START OTHER
-//
-//FIntVector::FIntVector(int a, int b, int c) { x = a, y = b, z = c; };
-//FIntVector::FIntVector() { x = 0, y = 0, z = 0; };
-//FIntVector FIntVector::operator+(FIntVector in0)
-//{
-//	FIntVector ReturnValue;
-//	ReturnValue.X = x + in0.X;
-//	ReturnValue.Y = y + in0.Y;
-//	ReturnValue.Z = z + in0.Z;
-//	return ReturnValue;
-//	//return FIntVector(in0.X + x, in0.Y + y, in0.Z + z);
-//}
-//FIntVector FIntVector::operator-(FIntVector in0)
-//{
-//	FIntVector ReturnValue;
-//	ReturnValue.X = x - in0.X;
-//	ReturnValue.Y = y - in0.Y;
-//	ReturnValue.Z = z - in0.Z;
-//	return ReturnValue;
-//	//return FIntVector(in0.X - x, in0.Y - y, in0.Z - z);
-//}
-//FIntVector FIntVector::operator*(FIntVector in0)
-//{
-//	FIntVector ReturnValue;
-//	ReturnValue.X = x * in0.X;
-//	ReturnValue.Y = y * in0.Y;
-//	ReturnValue.Z = z * in0.Z;
-//	return ReturnValue;
-//	//return FIntVector(in0.X * x, in0.Y * y, in0.Z * z);
-//}
-//void FIntVector::operator+=(FIntVector in0)
-//{
-//	x += in0.X;
-//	y += in0.Y;
-//	z += in0.Z;
-//	return;
-//}
-//void FIntVector::operator-=(FIntVector in0)
-//{
-//	x -= in0.X;
-//	y -= in0.Y;
-//	z -= in0.Z;
-//	return;
-//}
-//FString FIntVector::ToFStringFIntVector( )
-//{
-//	FString FStringOutput;
-//	FStringOutput += "(";
-//	FStringOutput += FString::FromInt(x);
-//	FStringOutput += ",";
-//	FStringOutput += FString::FromInt(y);
-//	FStringOutput += ",";
-//	FStringOutput += FString::FromInt(z);
-//	FStringOutput += ")";
-//	//	FStringOutput = FString::Format("(%d,%d,%d)", Args);
-//	return FStringOutput;
-//}
 
 int Multipole::AppendChargeMap(FIntVector InputPosition, TMap<FIntVector, int>& InputChargeMapRef)
 {
@@ -240,85 +171,7 @@ TMap<FIntVector, int> MultipoleLocationMap::ChargeMap()
 
 	return OutputChargeMap;
 }
-//MultipoleMoment MultipoleLocationMap::GetMultipoleMoment(MultipoleMap& MultipoleMapInput)
-//{
-//	MultipoleMoment MultipoleMomentOutput;
-//	MultipoleMomentOutput.MonopoleMoment = 0;
-//	for (int i = 0; i < 3; i++)
-//	{
-//		MultipoleMomentOutput.DipoleMoment[i] = 0;
-//	}
-//	for (int i = 0; i < 3; i++)
-//	{
-//		for (int j = 0; j < 3; j++)
-//		{
-//			MultipoleMomentOutput.QuadrupoleMoment[i][j] = 0;
-//		}
-//	}
-//	for (int i = 0; i < 3; i++)
-//	{
-//		for (int j = 0; j < 3; j++)
-//		{
-//			for (int k = 0; k < 3; k++)
-//			{
-//				if (i == 0 && j == 0 && k == 0)
-//				{
-//					MultipoleMomentOutput.QuadrupoleMoment[i][j][k] = 0;
-//				}
-//			}
-//		}
-//	}
-//	TMap<FIntVector, int> ChargeMapToProcess = MultipoleMapInput.ChargeMap();
-//	for(auto& iter : ChargeMapToProcess)
-//	{
-//		FIntVector CurrentKey = iter.Key;
-//		int q = iter.Value;
-//		int x = CurrentKey.X;
-//		int y = CurrentKey.Y;
-//		int z = CurrentKey.Z;
-//		MultipoleMomentOutput.MonopoleMoment += q;
-//		MultipoleMomentOutput.DipoleMoment[0] += q * (x);
-//		MultipoleMomentOutput.DipoleMoment[1] += q * (y);
-//		MultipoleMomentOutput.DipoleMoment[2] += q * (z);
-//		MultipoleMomentOutput.QuadrupoleMoment[0][0] += q * (2 * x ^ 2 - y ^ 2 - z ^ 2);
-//		MultipoleMomentOutput.QuadrupoleMoment[0][1] += q * (3 * x * y);
-//		MultipoleMomentOutput.QuadrupoleMoment[0][2] += q * (3 * x * z);
-//		MultipoleMomentOutput.QuadrupoleMoment[1][0] += q * (3 * x * y);
-//		MultipoleMomentOutput.QuadrupoleMoment[1][1] += q * (-x ^ 2 + 2 * y ^ 2 - z ^ 2);
-//		MultipoleMomentOutput.QuadrupoleMoment[1][2] += q * (3 * y * z);
-//		MultipoleMomentOutput.QuadrupoleMoment[2][0] += q * (3 * x * z);
-//		MultipoleMomentOutput.QuadrupoleMoment[2][1] += q * (3 * y * z);
-//		MultipoleMomentOutput.QuadrupoleMoment[2][2] += q * (-x ^ 2 - y ^ 2 + 2 * z ^ 2);
-//		MultipoleMomentOutput.OctupoleMoment[0][0][0] += q * (3 * x * (2 * x ^ 2 - 3 * (y ^ 2 + z ^ 2)));
-//		MultipoleMomentOutput.OctupoleMoment[0][0][1] += q * (-3 * y * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[0][0][2] += q * (-3 * z * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[0][1][0] += q * (-3 * y * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[0][1][1] += q * (-3 * x * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[0][1][2] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[0][2][0] += q * (-3 * z * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[0][2][1] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[0][2][2] += q * (-3 * x * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[1][0][0] += q * (-3 * y * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][0][1] += q * (-3 * x * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][0][2] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[1][1][0] += q * (-3 * x * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][1][1] += q * (-3 * y * (3 * x ^ 2 - 2 * y ^ 2 + 3 * z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][1][2] += q * (-3 * z * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][2][0] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[1][2][1] += q * (-3 * z * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[1][2][2] += q * (-3 * y * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[2][0][0] += q * (-3 * z * (-4 * x ^ 2 + y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[2][0][1] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[2][0][2] += q * (-3 * x * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[2][1][0] += q * (15 * x * y * z);
-//		MultipoleMomentOutput.OctupoleMoment[2][1][1] += q * (-3 * z * (x ^ 2 - 4 * y ^ 2 + z ^ 2));
-//		MultipoleMomentOutput.OctupoleMoment[2][1][2] += q * (-3 * y * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[2][2][0] += q * (-3 * x * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[2][2][1] += q * (-3 * y * (x ^ 2 + (2 * z - y) * (-y - 2 * z)));
-//		MultipoleMomentOutput.OctupoleMoment[2][2][2] += q * (-3 * z * (3 * x ^ 2 + 3 * y ^ 2 - 2 * z ^ 2));
-//	}
-//	return MultipoleMomentOutput;
-//}
+
 int MultipoleLocationMap::GetMonopoleMoment(int q, int x, int y, int z)
 {
 	return q;
@@ -1264,11 +1117,11 @@ void MultipoleMoment::MultipoleMomentSet(MultipoleLocationMap& InputMultipoleLoc
 		int y = CurrentKey.Y;
 		int z = CurrentKey.Z;
 		
-		MonopoleMoment += q;
+		MonopoleMoment += iter.Value;
 		
-		DipoleMoment[0] += q * x;
-		DipoleMoment[1] += q * y;
-		DipoleMoment[2] += q * z;
+		DipoleMoment[0] += iter.Value * CurrentKey.X;
+		DipoleMoment[1] += iter.Value * CurrentKey.Y;
+		DipoleMoment[2] += iter.Value * CurrentKey.Z;
 		
 		//QuadrupoleMoment[0][0] += q * (2 * x ^ 2 - y ^ 2 - z ^ 2);
 		//QuadrupoleMoment[0][1] += q * (3 * x * y);
@@ -1651,8 +1504,12 @@ FIntPoint UMultipoleAxesActorComponent::GetAddedOffsetSphericalMultipoleMomentCo
 	return ReturnFIntPoint;
 }
 
-FTransform UMultipoleAxesActorComponent::GetCylinderTransform(FVector StartPosition, FVector EndPosition, float Radius)
+FTransform UMultipoleAxesActorComponent::GetCylinderTransform(FVector StartPositionInput, FVector EndPositionInput, float Radius)
 {
+	//FVector StartPosition = FVector(StartPositionInput.X, StartPositionInput.Y, StartPositionInput.Z);
+	//FVector EndPosition = FVector(EndPositionInput.X, EndPositionInput.Y, EndPositionInput.Z);
+	FVector StartPosition = FVector(StartPositionInput.X, StartPositionInput.Y, StartPositionInput.Z);
+	FVector EndPosition = FVector(EndPositionInput.X, EndPositionInput.Y, EndPositionInput.Z);
 	FVector AddedVector = UKismetMathLibrary::Add_VectorVector(StartPosition, EndPosition);
 	FVector SubtractedVector = UKismetMathLibrary::Subtract_VectorVector(EndPosition, StartPosition);
 	FVector AveragePosition = UKismetMathLibrary::Multiply_VectorFloat(AddedVector, 0.5);
@@ -1661,6 +1518,8 @@ FTransform UMultipoleAxesActorComponent::GetCylinderTransform(FVector StartPosit
 	float ScaleXY = Radius / 50;
 	float ScaleZ = Magnitude / 100;
 	FRotator RotatorFinal = UKismetMathLibrary::MakeRotFromZ(Direction);
+	//FQuat FQuatFinal = FQuat()
+	FVector AveragePositionSwapYZ = FVector(AveragePosition.X, AveragePosition.Z, AveragePosition.Y);
 	FVector ScaleFinal = FVector(ScaleXY, ScaleXY, ScaleZ);
 	FTransform FTransformFinal = FTransform(RotatorFinal, AveragePosition, ScaleFinal);
 	return FTransformFinal;
@@ -1673,29 +1532,61 @@ FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromMultipoleFIntVe
 	FTransform FTransformFinal = GetCylinderTransform(StartPosition, EndPosition, RadiusLocal);
 	return FTransformFinal;
 }
+FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(int Charge, int Order, FIntVector StartCoord, FIntVector EndCoord)
+{
+	float RadiusLocalAxes = (AxesRadiusProportion * Spacing * 0.5);
+	float RadiusLocal = abs(Charge) * (RadiusPerUnitMultipoleProportion * Spacing * 0.5);
+	FVector StartPosition = GetVector(StartCoord);
+	FVector EndPosition = GetVector(EndCoord);
+	FTransform FTransformFinal = GetCylinderTransform(StartPosition, EndPosition, RadiusLocalAxes);
+	return FTransformFinal;
+}
 FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector PositionCoord, FIntVector SingleDisplacement)
 {
 	float RadiusLocal = (TickMarkRadiusProportion * Spacing * 0.5);
 	FVector FVectorPosition = GetVector(PositionCoord);
-	FVector FVectorDisplacement = UKismetMathLibrary::Multiply_VectorFloat(GetVector(SingleDisplacement), 0.5 * TickMarkProportion);
-	FVector StartPosition = UKismetMathLibrary::Subtract_VectorVector(FVectorPosition, FVectorDisplacement);
-	FVector EndPosition = UKismetMathLibrary::Add_VectorVector(FVectorPosition, FVectorDisplacement);
+	FVector StartPosition; 
+	FVector EndPosition;
+	if (PositionCoord.X != 0 && PositionCoord.Y == 0 && PositionCoord.Z == 0)
+	{
+		StartPosition = FVector(FVectorPosition.X - 0.5 * TickMarkProportion, FVectorPosition.Y, FVectorPosition.Z);
+		EndPosition = FVector(FVectorPosition.X + 0.5 * TickMarkProportion, FVectorPosition.Y, FVectorPosition.Z);
+	}
+	else if (PositionCoord.X == 0 && PositionCoord.Y != 0 && PositionCoord.Z == 0)
+	{
+		StartPosition = FVector(FVectorPosition.X, FVectorPosition.Y - 0.5 * TickMarkProportion, FVectorPosition.Z);
+		EndPosition = FVector(FVectorPosition.X, FVectorPosition.Y + 0.5 * TickMarkProportion, FVectorPosition.Z);
+	}
+	else if (PositionCoord.X == 0 && PositionCoord.Y == 0 && PositionCoord.Z != 0)
+	{
+		StartPosition = FVector(FVectorPosition.X, FVectorPosition.Y, FVectorPosition.Z - 0.5 * TickMarkProportion);
+		EndPosition = FVector(FVectorPosition.X, FVectorPosition.Y, FVectorPosition.Z + 0.5 * TickMarkProportion);
+	}
+	//FVector FVectorDisplacement = UKismetMathLibrary::Multiply_VectorFloat(GetVector(SingleDisplacement), 0.5 * TickMarkProportion);
+	//FVector StartPosition = UKismetMathLibrary::Subtract_VectorVector(FVectorPosition, FVectorDisplacement);
+	//FVector EndPosition = UKismetMathLibrary::Add_VectorVector(FVectorPosition, FVectorDisplacement);
 	FTransform FTransformFinal = GetCylinderTransform(StartPosition, EndPosition, RadiusLocal);
 	return FTransformFinal;
 }
 FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromFIntVectorTickMarkX(FIntVector PositionCoord)
 {
-	FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(1, 0, 0));
+	FTransform FTransformFinal = FTransform(FTransformRotateScaleTickMarkX);
+	FTransformFinal.AddToTranslation(GetVector(PositionCoord));
+	//FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(1, 0, 0));
 	return FTransformFinal;
 }
 FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromFIntVectorTickMarkY(FIntVector PositionCoord)
 {
-	FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(0, 1, 0));
+	FTransform FTransformFinal = FTransform(FTransformRotateScaleTickMarkX);
+	FTransformFinal.AddToTranslation(GetVector(PositionCoord));
+	//FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(0, 1, 0));
 	return FTransformFinal;
 }
 FTransform UMultipoleAxesActorComponent::GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector PositionCoord)
 {
-	FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(0, 0, 1));
+	FTransform FTransformFinal = FTransform(FTransformRotateScaleTickMarkX);
+	FTransformFinal.AddToTranslation(GetVector(PositionCoord));
+	//FTransform FTransformFinal = GetCylinderTransformFromFIntVectorFIntVectorTickMark(PositionCoord, FIntVector(0, 0, 1));
 	return FTransformFinal;
 }
 FTransform UMultipoleAxesActorComponent::GetCylinderTransformAxes(FIntVector StartCoord, FIntVector EndCoord)
@@ -1746,16 +1637,27 @@ int UMultipoleAxesActorComponent::UpdateChargeArrays()
 	MultipoleMomentOffset.MultipoleMomentSet(MultipoleSetupToOffset);
 	MultipoleMomentAddedOffset = MultipoleMomentAdded + MultipoleMomentOffset;
 	MultipoleMomentIfChanged = MultipoleMomentCurrent + MultipoleMomentAddedOffset;
-	//for (auto& iter : MultipoleSetup.MultipoleMap)
+	TMap<FIntVector, int> ChargeMapCurrent = MultipoleSetup.ChargeMap();
+	//AbsMaxRangeX = 5;
+	//AbsMaxRangeY = 5;
+	//AbsMaxRangeZ = 5;
+	//for (auto& CurrentPair : ChargeMapCurrent)
 	//{
-	//	Multipole & MultipoleValue = iter.Value;
-	//	FIntVector FIntVectorKey = iter.Key;
-	//	if (MultipoleValue.Charge == 0)
+	//	FIntVector CurrentKey = CurrentPair.Key;
+	//	if (CurrentKey.X > AbsMaxRangeX)
 	//	{
-	//		MultipoleSetup.MultipoleMap.Remove(FIntVectorKey);
+	//		AbsMaxRangeX = CurrentKey.X;
+	//	}
+	//	if (CurrentKey.Y > AbsMaxRangeY)
+	//	{
+	//		AbsMaxRangeY = CurrentKey.Y;
+	//	}
+	//	if (CurrentKey.Z > AbsMaxRangeZ)
+	//	{
+	//		AbsMaxRangeZ = CurrentKey.Z;
 	//	}
 	//}
-	TMap<FIntVector, int> ChargeMapCurrent = MultipoleSetup.ChargeMap();
+	UpdateMaximumRangeValuesBP();
 	TMultiMap< FIntVector, MultipoleBar > BarMultiMapCurrent = MultipoleSetup.BarMultiMap();
 	for (auto& CurrentPair : ChargeMapCurrent)
 	{
@@ -1854,22 +1756,81 @@ int UMultipoleAxesActorComponent::UpdateAxes()
 	bool FlagX = false;
 	bool FlagY = false;
 	bool FlagZ = false;
+	int LocalRangeX = DefaultRange;
+	int LocalRangeY = DefaultRange;
+	int LocalRangeZ = DefaultRange;
+	MultipoleAxesEnumXYZ;
+	MultipoleAxesValueXYZ;
+	if (MultipoleAxesEnumXYZ == 2)
+	{
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(-(RangeX + 1), 0, 0), FIntVector(RangeX + 1, 0, 0)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(0, -(RangeY + 1), 0), FIntVector(0, RangeY + 1, 0)));
+		for (int IndicesX = -LocalRangeX; IndicesX <= LocalRangeX; IndicesX++)
+		{
+			for (int IndicesY = -LocalRangeY; IndicesY <= LocalRangeY; IndicesY++)
+			{
+				if (IndicesY != 0) GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector(IndicesX, IndicesY, 0), FIntVector(1, 0, 0));
+				if (IndicesX != 0) GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector(IndicesX, IndicesY, 0), FIntVector(0, 1, 0));
+				//if (FlagX && IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkX(FIntVector(IndicesX, IndicesY, 0)));
+				//if (FlagY && IndicesX != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(IndicesX, IndicesY, 0)));
+			}
+		}
+	}
+	else if (MultipoleAxesEnumXYZ == 1)
+	{
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(-(RangeX + 1), 0, 0), FIntVector(RangeX + 1, 0, 0)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(0, 0, -(RangeZ + 1)), FIntVector(0, 0, RangeZ + 1)));
+		for (int IndicesX = -LocalRangeX; IndicesX <= LocalRangeX; IndicesX++)
+		{
+			for (int IndicesZ = -LocalRangeZ; IndicesZ <= LocalRangeZ; IndicesZ++)
+			{
+				if (IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkX(FIntVector(IndicesX, 0, IndicesZ)));
+				if (IndicesX != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(IndicesX, 0, IndicesZ)));
+			}
+		}
+	}
+	else if (MultipoleAxesEnumXYZ == 0)
+	{
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(0, -(RangeY + 1), 0), FIntVector(0, RangeY + 1, 0)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(0, 0, -(RangeZ + 1)), FIntVector(0, 0, RangeZ + 1)));
+		for (int IndicesY = -LocalRangeY; IndicesY <= LocalRangeY; IndicesY++)
+		{
+			for (int IndicesZ = -LocalRangeZ; IndicesZ <= LocalRangeZ; IndicesZ++)
+			{
+				if (IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(0, IndicesY, IndicesZ)));
+				if (IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(0, IndicesY, IndicesZ)));
+			}
+		}
+	}
+	return 0;
+}
+int UMultipoleAxesActorComponent::UpdateAxesDifferent()
+{
+	AxesCylinders.Empty();
+	TickMarkCylinders.Empty();
+	TickMarkCylinders.Empty();
+	UpdatedAxes = true;
+	bool FlagX = false;
+	bool FlagY = false;
+	bool FlagZ = false;
 	if (RangeX != 0)
 	{
-		AxesCylinders.Add(GetCylinderTransformAxes(FIntVector(-(RangeX + 1), 0, 0), FIntVector(RangeX + 1, 0, 0)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(-(RangeX + 1), 0, 0), FIntVector(RangeX + 1, 0, 0)));
 		FlagX = true;
 	}
 	if (RangeY != 0)
 	{
-		AxesCylinders.Add(GetCylinderTransformAxes(FIntVector(0, -(RangeY + 1), 0), FIntVector(0, RangeY + 1, 0)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0,0,FIntVector(0, -(RangeY + 1), 0), FIntVector(0, RangeY + 1, 0)));
 		FlagY = true;
 	}
 	if (RangeZ != 0)
 	{
-		AxesCylinders.Add(GetCylinderTransformAxes(FIntVector(0, 0, -(RangeZ + 1)), FIntVector(0, 0, RangeZ + 1)));
+		AxesCylinders.Add(GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(0, 0, FIntVector(0, 0, -(RangeZ + 1)), FIntVector(0, 0, RangeZ + 1)));
 		FlagZ = true;
 	}
-	if (GridlinesFlag) {
+	GridlinesFlag = false;
+	if (GridlinesFlag) 
+	{
 		for (int IndicesX = -RangeX; IndicesX <= RangeX; IndicesX++)
 		{
 
@@ -1888,6 +1849,8 @@ int UMultipoleAxesActorComponent::UpdateAxes()
 			{
 				for (int IndicesZ = -RangeZ; IndicesZ <= RangeZ; IndicesZ++)
 				{
+					if (FlagY && IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(0, IndicesY, IndicesZ)));
+					if (FlagZ && IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(0, IndicesY, IndicesZ)));
 					if (FlagY && IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(0, IndicesY, IndicesZ)));
 					if (FlagZ && IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(0, IndicesY, IndicesZ)));
 				}
@@ -1933,8 +1896,20 @@ int UMultipoleAxesActorComponent::UpdateAxes()
 	}
 	else
 	{
-		TMap<FIntVector, int> ChargeMapCurrent = MultipoleSetup.ChargeMap();
-		if (FlagX && !FlagY && FlagZ)
+		if (FlagX && FlagY && !FlagZ)
+		{
+			for (int IndicesX = -RangeX; IndicesX <= RangeX; IndicesX++)
+			{
+				for (int IndicesY = -RangeY; IndicesY <= RangeY; IndicesY++)
+				{
+					if (FlagX && IndicesY != 0) GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector(IndicesX, IndicesY, 0), FIntVector(1, 0, 0));
+					if (FlagY && IndicesX != 0) GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector(IndicesX, IndicesY, 0), FIntVector(0, 1, 0));
+					//if (FlagX && IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkX(FIntVector(IndicesX, IndicesY, 0)));
+					//if (FlagY && IndicesX != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(IndicesX, IndicesY, 0)));
+				}
+			}
+		}
+		else if (FlagX && !FlagY && FlagZ)
 		{
 			for (int IndicesX = -RangeX; IndicesX <= RangeX; IndicesX++)
 			{
@@ -1942,6 +1917,17 @@ int UMultipoleAxesActorComponent::UpdateAxes()
 				{
 					if (FlagX && IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkX(FIntVector(IndicesX, 0, IndicesZ)));
 					if (FlagZ && IndicesX != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(IndicesX, 0, IndicesZ)));
+				}
+			}
+		}
+		else if (!FlagX && FlagY && FlagZ)
+		{
+			for (int IndicesY = -RangeY; IndicesY <= RangeY; IndicesY++)
+			{
+				for (int IndicesZ = -RangeZ; IndicesZ <= RangeZ; IndicesZ++)
+				{
+					if (FlagY && IndicesZ != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkY(FIntVector(0, IndicesY, IndicesZ)));
+					if (FlagZ && IndicesY != 0) TickMarkCylinders.Add(GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector(0, IndicesY, IndicesZ)));
 				}
 			}
 		}
@@ -2028,6 +2014,58 @@ int UMultipoleAxesActorComponent::MovementEventProcess(int x0, int y0, int z0)
 		InputUpdate(false, true, CurrentPositionState, DownClickFocusPositionState);
 	}
 	return 0;
+}
+int UMultipoleAxesActorComponent::OutputEnumEdge(int x0, int y0, int z0)
+{
+	if (MultipoleAxesEnumXYZ == 0)
+	{
+		if (abs(y0) == (AbsMaxRangeY + 1))
+		{
+			return 1;
+		}
+		else if (abs(z0) == (AbsMaxRangeZ + 1))
+		{
+			return 2;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+	else if (MultipoleAxesEnumXYZ == 1)
+	{
+		if (abs(x0) == (AbsMaxRangeX + 1))
+		{
+			return 0;
+		}
+		else if (abs(z0) == (AbsMaxRangeZ + 1))
+		{
+			return 2;
+		}
+		else 
+		{
+			return 3;
+		}
+	}
+	else if (MultipoleAxesEnumXYZ == 2)
+	{
+		if (abs(x0) == (AbsMaxRangeX + 1))
+		{
+			return 0;
+		}
+		else if (abs(y0) == (AbsMaxRangeY + 1))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+	else
+	{
+		return 3;
+	}
 }
 int UMultipoleAxesActorComponent::InputUpdate(bool ClickUp, bool SpecialButton, FIntVector  CurrentPositionInput, FIntVector DownClickPositionInput)
 {
@@ -2188,8 +2226,25 @@ int UMultipoleAxesActorComponent::InputUpdate(bool ClickUp, bool SpecialButton, 
 				// RIGHT CLICKED ON EMPTY SPACE THEN RELEASED IN SAME SPOT
 				if (CurrentPositionInput == DownClickPositionInput)
 				{
-					Multipole NewMultipole = Multipole(-1);
-					MultipoleSetup.MultipoleMap.Add(CurrentPositionInput, NewMultipole);
+					int LocalEnum = OutputEnumEdge(CurrentPositionInput.X, CurrentPositionInput.Y, CurrentPositionInput.Z);
+					LocalEnum = 3;
+					if (LocalEnum == 0)
+					{
+						SetNewAxisOffset(0, CurrentPositionInput.X);
+					}
+					else if (LocalEnum == 1)
+					{
+						SetNewAxisOffset(1, CurrentPositionInput.Y);
+					}
+					else if (LocalEnum == 2)
+					{
+						SetNewAxisOffset(2, CurrentPositionInput.Z);
+					}
+					else if(LocalEnum == 3)
+					{
+						Multipole NewMultipole = Multipole(-1);
+						MultipoleSetup.MultipoleMap.Add(CurrentPositionInput, NewMultipole);
+					}
 				}
 				// RIGHT CLICKED ONE SPOT ON EMPTY SPACE AND RELEASED ELSEWHERE
 				else
@@ -2221,8 +2276,25 @@ int UMultipoleAxesActorComponent::InputUpdate(bool ClickUp, bool SpecialButton, 
 				// LEFT CLICKED ON EMPTY SPACE AND RELEASED IN SAME SPOT
 				if (CurrentPositionInput == DownClickPositionInput)
 				{
-					Multipole NewMultipole = Multipole(1);
-					MultipoleSetup.MultipoleMap.Add(CurrentPositionInput, NewMultipole);
+					int LocalEnum = OutputEnumEdge(CurrentPositionInput.X, CurrentPositionInput.Y, CurrentPositionInput.Z);
+					LocalEnum = 3;
+					if (LocalEnum == 0)
+					{
+						SetNewAxisOffset(0, CurrentPositionInput.X);
+					}
+					else if (LocalEnum == 1)
+					{
+						SetNewAxisOffset(1, CurrentPositionInput.Y);
+					}
+					else if (LocalEnum == 2)
+					{
+						SetNewAxisOffset(2, CurrentPositionInput.Z);
+					}
+					else
+					{
+						Multipole NewMultipole = Multipole(1);
+						MultipoleSetup.MultipoleMap.Add(CurrentPositionInput, NewMultipole);
+					}
 				}
 				// LEFT CLICKED ONE SPOT ON EMPTY SPACE AND RELEASED ELSEWHERE
 				else
@@ -2294,6 +2366,42 @@ int UMultipoleAxesActorComponent::InputUpdate(bool ClickUp, bool SpecialButton, 
 	UpdateChargeArrays();
 	return 0;
 }
+int UMultipoleAxesActorComponent::SetNewAxisOffset(int InputEnumXYZ, int InputValueXYZ)
+{
+	MultipoleAxesEnumXYZ = InputEnumXYZ;
+	MultipoleAxesValueXYZ = InputValueXYZ;
+	UpdateAxes();
+	return 0;
+}
+TMap<FIntVector, int> UMultipoleAxesActorComponent::GetChargeArrayCurrentBP()
+{
+	TMap<FIntVector, int> TMapReturnValue = MultipoleSetup.ChargeMap();
+	return TMapReturnValue;
+}
+int UMultipoleAxesActorComponent::UpdateMaximumRangeValuesBP()
+{
+	TMap<FIntVector, int> ChargeMapCurrent = MultipoleSetup.ChargeMap();
+	AbsMaxRangeX = 5;
+	AbsMaxRangeY = 5;
+	AbsMaxRangeZ = 5;
+	for (auto& CurrentPair : ChargeMapCurrent)
+	{
+		FIntVector CurrentKey = CurrentPair.Key;
+		if (abs(CurrentKey.X) > AbsMaxRangeX)
+		{
+			AbsMaxRangeX = abs(CurrentKey.X);
+		}
+		if (abs(CurrentKey.Y) > AbsMaxRangeY)
+		{
+			AbsMaxRangeY = abs(CurrentKey.Y);
+		}
+		if (abs(CurrentKey.Z) > AbsMaxRangeZ)
+		{
+			AbsMaxRangeZ = abs(CurrentKey.Z);
+		}
+	}
+	return 0;
+}
 UMultipoleAxesActorComponent::UMultipoleAxesActorComponent(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
@@ -2313,29 +2421,77 @@ UMultipoleAxesActorComponent::UMultipoleAxesActorComponent(const FObjectInitiali
 	TArray<FIntVector> TestList;
 	Multipole TestMP = Multipole(3, TestList);
 	MultipoleSetup.MultipoleMap.Add(FIntVector(0, 0, 0), TestMP);
+	// SET VIEWABLE PROPERTIES
+	DefaultRange = 5;
+	RangeX = 5;
+	RangeY = 5;
+	RangeZ = 0;
+	int LocalRangeX = 5;
+	int LocalRangeY = 5;
+	int LocalRangeZ = 5;
+	Spacing = 100.0;
+	TickMarkProportion = 0.4;
+	TickMarkRadiusProportion = 0.05;
+	AxesRadiusProportion = 0.1;
+	RadiusPerUnitChargeProportion = 0.3;
+	RadiusPerUnitMultipoleProportion = 0.15;
+	MultipoleAxesEnumXYZ = 1;
+	MultipoleAxesValueXYZ = 0;
+	// BEGIN SET AXES AND TICK TRANSFORMS
 
-	//TArray<FIntVector> MPTA, MPTB, MPTC;
-	//MPTA.Add(FIntVector(0, 0, 1));
-	//MPTB.Add(FIntVector(0, 0, 3));
-	//MPTB.Add(FIntVector(0, 0, 1));
-	//MPTC.Add(FIntVector(0, 0, 6));
-	//MPTC.Add(FIntVector(0, 0, 3));
-	//MPTC.Add(FIntVector(0, 0, 1));
-	//Multipole MPA = Multipole(1, MPTA);
-	//Multipole MPB = Multipole(2, MPTB);
-	//Multipole MPC = Multipole(3, MPTC);
-	//TArray<FIntVector> TA, TB, TC;
-	//Multipole A = Multipole(4, TA);
-	//Multipole B = Multipole(5, TB);
-	//Multipole C = Multipole(6, TC);
+	float RadiusLocalAxes = (AxesRadiusProportion * Spacing * 0.5);
+	float RadiusLocalTickMark = (TickMarkRadiusProportion * Spacing * 0.5);
+	FVectorScaleTickMark = FVector(RadiusLocalTickMark / 50, RadiusLocalTickMark / 50, Spacing * TickMarkProportion / 100);
+	FVectorScaleTickMarkX = FVector(Spacing * TickMarkProportion, RadiusLocalTickMark / 50, RadiusLocalTickMark / 50);
+	FVectorScaleTickMarkY = FVector(RadiusLocalTickMark / 50, Spacing * TickMarkProportion, RadiusLocalTickMark / 50);
+	FVectorScaleTickMarkZ = FVector(RadiusLocalTickMark / 50, RadiusLocalTickMark / 50, Spacing * TickMarkProportion);
+	FVectorScaleAxesBase100 = FVector(RadiusLocalAxes / 50, RadiusLocalAxes / 50, 1.0);
+	FVectorScaleAxes = FVector(RadiusLocalAxes / 50, RadiusLocalAxes / 50, 2 * DefaultRange * Spacing / 100);
+	FVectorScaleAxesX = FVector(2 * LocalRangeX * Spacing / 100, RadiusLocalAxes / 50, RadiusLocalAxes / 50);
+	FVectorScaleAxesY = FVector(RadiusLocalAxes / 50, 2 * LocalRangeY * Spacing / 100, RadiusLocalAxes / 50);
+	FVectorScaleAxesZ = FVector(RadiusLocalAxes / 50, RadiusLocalAxes / 50, 2 * LocalRangeZ * Spacing / 100);
+
+	FTransformRotateScaleTickMarkX = GetCylinderTransform(
+		FVector( -Spacing * 0.5 * TickMarkProportion, 0, 0), FVector( Spacing * 0.5 * TickMarkProportion, 0, 0), RadiusLocalTickMark);
+	FTransformRotateScaleTickMarkY = GetCylinderTransform(
+		FVector(0,  -Spacing * 0.5 * TickMarkProportion, 0), FVector(0,  Spacing * 0.5 * TickMarkProportion, 0), RadiusLocalTickMark);
+	FTransformRotateScaleTickMarkZ = GetCylinderTransform(
+		FVector(0, 0, -Spacing * 0.5 * TickMarkProportion), FVector(0, 0, Spacing * 0.5 * TickMarkProportion), RadiusLocalTickMark);
+	FTransformRotateScaleAxesX = GetCylinderTransform(
+		GetVector(FIntVector(-LocalRangeX, 0, 0)), GetVector(FIntVector(LocalRangeX, 0, 0)), RadiusLocalAxes);
+	FTransformRotateScaleAxesY = GetCylinderTransform(
+		GetVector(FIntVector(0, -LocalRangeY, 0)), GetVector(FIntVector(0, LocalRangeY, 0)), RadiusLocalAxes);
+	FTransformRotateScaleAxesY = GetCylinderTransform(
+		GetVector(FIntVector(0, 0, -LocalRangeZ)), GetVector(FIntVector(0, 0, LocalRangeZ)), RadiusLocalAxes);
+
+	// BEGIN STARTING MULTIPOLES
+
+	TArray<FIntVector> MPTA, MPTB, MPTC;
+	MPTA.Add(FIntVector(0, 1, 0));
+	MPTB.Add(FIntVector(0, 3, 0));
+	MPTB.Add(FIntVector(0, 1, 0));
+	MPTC.Add(FIntVector(0, 6, 0));
+	MPTC.Add(FIntVector(0, 3, 0));
+	MPTC.Add(FIntVector(0, 1, 0));
+	Multipole MPA = Multipole(1, MPTA);
+	Multipole MPB = Multipole(2, MPTB);
+	Multipole MPC = Multipole(3, MPTC);
+
+	TArray<FIntVector> TA, TB, TC;
+	Multipole A = Multipole(4, TA);
+	Multipole B = Multipole(5, TB);
+	Multipole C = Multipole(6, TC);
+
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(-10, 0, 0), A);
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(-6, 0, 0), B);
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(-2, 0, 0), C);
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(2, 0, 0), MPA);
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(6, 0, 0), MPB);
 	//MultipoleSetup.MultipoleMap.Add(FIntVector(10, 0, 0), MPC);
+
 	UpdateAxes();
 	UpdateChargeArrays();
+	
 	//int test = MultipoleSetup.GetTotalMonopoleMoment();
 	//int test0 = MultipoleSetup.GetTotalDipoleMoment(0);
 	//int test1 = MultipoleSetup.GetTotalDipoleMoment(1);
@@ -2384,7 +2540,4 @@ FTransform UMultipoleAxesActorComponent::GetSphereForClickSpecial()
 {
 	return GetSphereTransformFromFIntVector(DownClickOrdinaryPositionState, 3);
 }
-//UMultipoleAxesActorComponent::ClickDownOrdinary()
-//{
-//	
-//}
+

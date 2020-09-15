@@ -10,16 +10,19 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FTransform;
 struct FIntPoint;
+struct FIntVector; 
 #ifdef MULTIPOLEAXESDEMO_MultipoleAxesActorComponent_generated_h
 #error "MultipoleAxesActorComponent.generated.h already included, missing '#pragma once' in MultipoleAxesActorComponent.h"
 #endif
 #define MULTIPOLEAXESDEMO_MultipoleAxesActorComponent_generated_h
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_SPARSE_DATA
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_RPC_WRAPPERS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_SPARSE_DATA
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execSetNewAxisOffset); \
 	DECLARE_FUNCTION(execMovementEventProcess); \
 	DECLARE_FUNCTION(execMouseButtonEventProcess); \
+	DECLARE_FUNCTION(execUpdateAxesDifferent); \
 	DECLARE_FUNCTION(execUpdateAxes); \
 	DECLARE_FUNCTION(execChangeSpacing); \
 	DECLARE_FUNCTION(execChangeRangeZ); \
@@ -53,13 +56,17 @@ struct FIntPoint;
 	DECLARE_FUNCTION(execGetIfChangedSphericalMultipoleMomentCoefficient); \
 	DECLARE_FUNCTION(execGetAddedOffsetCartesianMultipoleMoment); \
 	DECLARE_FUNCTION(execGetCurrentCartesianMultipoleMoment); \
-	DECLARE_FUNCTION(execGetIfChangedCartesianMultipoleMoment);
+	DECLARE_FUNCTION(execGetIfChangedCartesianMultipoleMoment); \
+	DECLARE_FUNCTION(execUpdateMaximumRangeValuesBP); \
+	DECLARE_FUNCTION(execGetChargeArrayCurrentBP);
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_RPC_WRAPPERS_NO_PURE_DECLS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execSetNewAxisOffset); \
 	DECLARE_FUNCTION(execMovementEventProcess); \
 	DECLARE_FUNCTION(execMouseButtonEventProcess); \
+	DECLARE_FUNCTION(execUpdateAxesDifferent); \
 	DECLARE_FUNCTION(execUpdateAxes); \
 	DECLARE_FUNCTION(execChangeSpacing); \
 	DECLARE_FUNCTION(execChangeRangeZ); \
@@ -93,10 +100,12 @@ struct FIntPoint;
 	DECLARE_FUNCTION(execGetIfChangedSphericalMultipoleMomentCoefficient); \
 	DECLARE_FUNCTION(execGetAddedOffsetCartesianMultipoleMoment); \
 	DECLARE_FUNCTION(execGetCurrentCartesianMultipoleMoment); \
-	DECLARE_FUNCTION(execGetIfChangedCartesianMultipoleMoment);
+	DECLARE_FUNCTION(execGetIfChangedCartesianMultipoleMoment); \
+	DECLARE_FUNCTION(execUpdateMaximumRangeValuesBP); \
+	DECLARE_FUNCTION(execGetChargeArrayCurrentBP);
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_INCLASS_NO_PURE_DECLS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUMultipoleAxesActorComponent(); \
 	friend struct Z_Construct_UClass_UMultipoleAxesActorComponent_Statics; \
@@ -105,7 +114,7 @@ public: \
 	DECLARE_SERIALIZER(UMultipoleAxesActorComponent)
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_INCLASS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_INCLASS \
 private: \
 	static void StaticRegisterNativesUMultipoleAxesActorComponent(); \
 	friend struct Z_Construct_UClass_UMultipoleAxesActorComponent_Statics; \
@@ -114,7 +123,7 @@ public: \
 	DECLARE_SERIALIZER(UMultipoleAxesActorComponent)
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_STANDARD_CONSTRUCTORS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMultipoleAxesActorComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMultipoleAxesActorComponent) \
@@ -127,7 +136,7 @@ private: \
 public:
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_ENHANCED_CONSTRUCTORS \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UMultipoleAxesActorComponent(UMultipoleAxesActorComponent&&); \
@@ -138,28 +147,28 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UMultipoleAxesActorComponent); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UMultipoleAxesActorComponent)
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_PRIVATE_PROPERTY_OFFSET
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_163_PROLOG
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_GENERATED_BODY_LEGACY \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_PRIVATE_PROPERTY_OFFSET
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_169_PROLOG
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_PRIVATE_PROPERTY_OFFSET \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_SPARSE_DATA \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_RPC_WRAPPERS \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_INCLASS \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_STANDARD_CONSTRUCTORS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_PRIVATE_PROPERTY_OFFSET \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_SPARSE_DATA \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_RPC_WRAPPERS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_INCLASS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_GENERATED_BODY \
+#define MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_PRIVATE_PROPERTY_OFFSET \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_SPARSE_DATA \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_RPC_WRAPPERS_NO_PURE_DECLS \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_INCLASS_NO_PURE_DECLS \
-	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_166_ENHANCED_CONSTRUCTORS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_PRIVATE_PROPERTY_OFFSET \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_SPARSE_DATA \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_RPC_WRAPPERS_NO_PURE_DECLS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_INCLASS_NO_PURE_DECLS \
+	MultipoleAxesDemo_Source_MultipoleAxesDemo_MultipoleAxesActorComponent_h_172_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

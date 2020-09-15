@@ -18,8 +18,19 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 	UPackage* Z_Construct_UPackage__Script_MultipoleAxesDemo();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntPoint();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntVector();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FTransform();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
+	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execSetNewAxisOffset)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_InputEnumXYZ);
+		P_GET_PROPERTY(FIntProperty,Z_Param_InputValueXYZ);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->SetNewAxisOffset(Z_Param_InputEnumXYZ,Z_Param_InputValueXYZ);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execMovementEventProcess)
 	{
 		P_GET_PROPERTY(FIntProperty,Z_Param_x0);
@@ -37,6 +48,13 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		*(int32*)Z_Param__Result=P_THIS->MouseButtonEventProcess(Z_Param_ButtonUpFlagInput,Z_Param_SpecialButtonFlagInput);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execUpdateAxesDifferent)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->UpdateAxesDifferent();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execUpdateAxes)
@@ -319,6 +337,20 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		*(int32*)Z_Param__Result=P_THIS->GetIfChangedCartesianMultipoleMoment(Z_Param_Out_InputTArrray);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execUpdateMaximumRangeValuesBP)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(int32*)Z_Param__Result=P_THIS->UpdateMaximumRangeValuesBP();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UMultipoleAxesActorComponent::execGetChargeArrayCurrentBP)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(TMap<FIntVector,int32>*)Z_Param__Result=P_THIS->GetChargeArrayCurrentBP();
+		P_NATIVE_END;
+	}
 	void UMultipoleAxesActorComponent::StaticRegisterNativesUMultipoleAxesActorComponent()
 	{
 		UClass* Class = UMultipoleAxesActorComponent::StaticClass();
@@ -344,6 +376,7 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 			{ "FromMapGetTotalQuadrupoleMoment", &UMultipoleAxesActorComponent::execFromMapGetTotalQuadrupoleMoment },
 			{ "GetAddedOffsetCartesianMultipoleMoment", &UMultipoleAxesActorComponent::execGetAddedOffsetCartesianMultipoleMoment },
 			{ "GetAddedOffsetSphericalMultipoleMomentCoefficient", &UMultipoleAxesActorComponent::execGetAddedOffsetSphericalMultipoleMomentCoefficient },
+			{ "GetChargeArrayCurrentBP", &UMultipoleAxesActorComponent::execGetChargeArrayCurrentBP },
 			{ "GetCurrentCartesianMultipoleMoment", &UMultipoleAxesActorComponent::execGetCurrentCartesianMultipoleMoment },
 			{ "GetCurrentSphericalMultipoleMomentCoefficient", &UMultipoleAxesActorComponent::execGetCurrentSphericalMultipoleMomentCoefficient },
 			{ "GetIfChangedCartesianMultipoleMoment", &UMultipoleAxesActorComponent::execGetIfChangedCartesianMultipoleMoment },
@@ -357,8 +390,11 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 			{ "IfChangedQuadrupoleMoment", &UMultipoleAxesActorComponent::execIfChangedQuadrupoleMoment },
 			{ "MouseButtonEventProcess", &UMultipoleAxesActorComponent::execMouseButtonEventProcess },
 			{ "MovementEventProcess", &UMultipoleAxesActorComponent::execMovementEventProcess },
+			{ "SetNewAxisOffset", &UMultipoleAxesActorComponent::execSetNewAxisOffset },
 			{ "UpdateAxes", &UMultipoleAxesActorComponent::execUpdateAxes },
+			{ "UpdateAxesDifferent", &UMultipoleAxesActorComponent::execUpdateAxesDifferent },
 			{ "UpdateChargeArrays", &UMultipoleAxesActorComponent::execUpdateChargeArrays },
+			{ "UpdateMaximumRangeValuesBP", &UMultipoleAxesActorComponent::execUpdateMaximumRangeValuesBP },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -1178,6 +1214,45 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics
+	{
+		struct MultipoleAxesActorComponent_eventGetChargeArrayCurrentBP_Parms
+		{
+			TMap<FIntVector,int32> ReturnValue;
+		};
+		static const UE4CodeGen_Private::FMapPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_ReturnValue_Key_KeyProp;
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ReturnValue_ValueProp;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FMapPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventGetChargeArrayCurrentBP_Parms, ReturnValue), EMapPropertyFlags::None, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue_Key_KeyProp = { "ReturnValue_Key", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FIntVector, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue_ValueProp = { "ReturnValue", nullptr, (EPropertyFlags)0x0000000000000000, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, 1, METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue_Key_KeyProp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::NewProp_ReturnValue_ValueProp,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MultipoleCustom" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMultipoleAxesActorComponent, nullptr, "GetChargeArrayCurrentBP", nullptr, nullptr, sizeof(MultipoleAxesActorComponent_eventGetChargeArrayCurrentBP_Parms), Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_GetCurrentCartesianMultipoleMoment_Statics
 	{
 		struct MultipoleAxesActorComponent_eventGetCurrentCartesianMultipoleMoment_Parms
@@ -1286,9 +1361,7 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::Function_MetaDataParams[] = {
 		{ "Category", "FxnGetMultipoleMoments" },
-		{ "Comment", "//MultipoleMoment GetMultipoleMoment(MultipoleMap& MultipoleMapInput);\n" },
 		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
-		{ "ToolTip", "MultipoleMoment GetMultipoleMoment(MultipoleMap& MultipoleMapInput);" },
 	};
 #endif
 	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMultipoleAxesActorComponent, nullptr, "GetIfChangedCartesianMultipoleMoment", nullptr, nullptr, sizeof(MultipoleAxesActorComponent_eventGetIfChangedCartesianMultipoleMoment_Parms), Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment_Statics::Function_MetaDataParams)) };
@@ -1693,6 +1766,47 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics
+	{
+		struct MultipoleAxesActorComponent_eventSetNewAxisOffset_Parms
+		{
+			int32 InputEnumXYZ;
+			int32 InputValueXYZ;
+			int32 ReturnValue;
+		};
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_InputValueXYZ;
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_InputEnumXYZ;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventSetNewAxisOffset_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_InputValueXYZ = { "InputValueXYZ", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventSetNewAxisOffset_Parms, InputValueXYZ), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_InputEnumXYZ = { "InputEnumXYZ", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventSetNewAxisOffset_Parms, InputEnumXYZ), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_ReturnValue,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_InputValueXYZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::NewProp_InputEnumXYZ,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MyCategory" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMultipoleAxesActorComponent, nullptr, "SetNewAxisOffset", nullptr, nullptr, sizeof(MultipoleAxesActorComponent_eventSetNewAxisOffset_Parms), Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxes_Statics
 	{
 		struct MultipoleAxesActorComponent_eventUpdateAxes_Parms
@@ -1726,6 +1840,39 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics
+	{
+		struct MultipoleAxesActorComponent_eventUpdateAxesDifferent_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventUpdateAxesDifferent_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MyCategory" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMultipoleAxesActorComponent, nullptr, "UpdateAxesDifferent", nullptr, nullptr, sizeof(MultipoleAxesActorComponent_eventUpdateAxesDifferent_Parms), Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateChargeArrays_Statics
 	{
 		struct MultipoleAxesActorComponent_eventUpdateChargeArrays_Parms
@@ -1756,6 +1903,39 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		if (!ReturnFunction)
 		{
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateChargeArrays_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics
+	{
+		struct MultipoleAxesActorComponent_eventUpdateMaximumRangeValuesBP_Parms
+		{
+			int32 ReturnValue;
+		};
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_ReturnValue;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(MultipoleAxesActorComponent_eventUpdateMaximumRangeValuesBP_Parms, ReturnValue), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::Function_MetaDataParams[] = {
+		{ "Category", "MultipoleCustom" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMultipoleAxesActorComponent, nullptr, "UpdateMaximumRangeValuesBP", nullptr, nullptr, sizeof(MultipoleAxesActorComponent_eventUpdateMaximumRangeValuesBP_Parms), Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -1887,6 +2067,30 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		static void NewProp_UpdatedChargeArrays_SetBit(void* Obj);
 		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_UpdatedChargeArrays;
 #if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MultipoleAxesValueXYZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MultipoleAxesValueXYZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_MultipoleAxesEnumXYZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_MultipoleAxesEnumXYZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultRange_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_DefaultRange;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AbsMaxRangeZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_AbsMaxRangeZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AbsMaxRangeY_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_AbsMaxRangeY;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_AbsMaxRangeX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_AbsMaxRangeX;
+#if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_GridlinesFlag_MetaData[];
 #endif
 		static void NewProp_GridlinesFlag_SetBit(void* Obj);
@@ -1895,6 +2099,66 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CurrentFocusEnum_None_Ordinary_Special_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_CurrentFocusEnum_None_Ordinary_Special;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleAxesZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleAxesZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleAxesY_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleAxesY;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleAxesX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleAxesX;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleTickMarkZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleTickMarkZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleTickMarkY_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleTickMarkY;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FTransformRotateScaleTickMarkX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FTransformRotateScaleTickMarkX;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleAxesZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleAxesZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleAxesY_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleAxesY;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleAxesX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleAxesX;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleAxesBase100_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleAxesBase100;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleAxes_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleAxes;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleTickMarkZ_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleTickMarkZ;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleTickMarkY_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleTickMarkY;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleTickMarkX_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleTickMarkX;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FVectorScaleTickMark_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_FVectorScaleTickMark;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -1925,9 +2189,10 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_FromMapGetTotalQuadrupoleMoment, "FromMapGetTotalQuadrupoleMoment" }, // 3991802161
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetAddedOffsetCartesianMultipoleMoment, "GetAddedOffsetCartesianMultipoleMoment" }, // 2704363551
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetAddedOffsetSphericalMultipoleMomentCoefficient, "GetAddedOffsetSphericalMultipoleMomentCoefficient" }, // 2274101787
+		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetChargeArrayCurrentBP, "GetChargeArrayCurrentBP" }, // 652165823
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetCurrentCartesianMultipoleMoment, "GetCurrentCartesianMultipoleMoment" }, // 869523248
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetCurrentSphericalMultipoleMomentCoefficient, "GetCurrentSphericalMultipoleMomentCoefficient" }, // 3853924834
-		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment, "GetIfChangedCartesianMultipoleMoment" }, // 2086624109
+		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedCartesianMultipoleMoment, "GetIfChangedCartesianMultipoleMoment" }, // 3386471640
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetIfChangedSphericalMultipoleMomentCoefficient, "GetIfChangedSphericalMultipoleMomentCoefficient" }, // 1898618901
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetSphereForClickCurrent, "GetSphereForClickCurrent" }, // 3926934530
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_GetSphereForClickOrdinary, "GetSphereForClickOrdinary" }, // 3058153286
@@ -1938,8 +2203,11 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_IfChangedQuadrupoleMoment, "IfChangedQuadrupoleMoment" }, // 3271440331
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_MouseButtonEventProcess, "MouseButtonEventProcess" }, // 2950131059
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_MovementEventProcess, "MovementEventProcess" }, // 2742651985
+		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_SetNewAxisOffset, "SetNewAxisOffset" }, // 1227853579
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxes, "UpdateAxes" }, // 2604250253
+		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateAxesDifferent, "UpdateAxesDifferent" }, // 1202012564
 		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateChargeArrays, "UpdateChargeArrays" }, // 4023079768
+		{ &Z_Construct_UFunction_UMultipoleAxesActorComponent_UpdateMaximumRangeValuesBP, "UpdateMaximumRangeValuesBP" }, // 911685046
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::Class_MetaDataParams[] = {
@@ -2149,6 +2417,48 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 	}
 	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedChargeArrays = { "UpdatedChargeArrays", nullptr, (EPropertyFlags)0x0010000000020005, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(UMultipoleAxesActorComponent), &Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedChargeArrays_SetBit, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedChargeArrays_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedChargeArrays_MetaData)) };
 #if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesValueXYZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesValueXYZ = { "MultipoleAxesValueXYZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, MultipoleAxesValueXYZ), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesValueXYZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesValueXYZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesEnumXYZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesEnumXYZ = { "MultipoleAxesEnumXYZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, MultipoleAxesEnumXYZ), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesEnumXYZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesEnumXYZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_DefaultRange_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_DefaultRange = { "DefaultRange", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, DefaultRange), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_DefaultRange_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_DefaultRange_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeZ = { "AbsMaxRangeZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, AbsMaxRangeZ), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeY_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeY = { "AbsMaxRangeY", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, AbsMaxRangeY), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeY_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeX_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeX = { "AbsMaxRangeX", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, AbsMaxRangeX), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeX_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeX_MetaData)) };
+#if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_GridlinesFlag_MetaData[] = {
 		{ "Category", "MultipoleAxesActorComponent" },
 		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
@@ -2166,6 +2476,111 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 	};
 #endif
 	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_CurrentFocusEnum_None_Ordinary_Special = { "CurrentFocusEnum_None_Ordinary_Special", nullptr, (EPropertyFlags)0x0010000000020005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, CurrentFocusEnum_None_Ordinary_Special), METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_CurrentFocusEnum_None_Ordinary_Special_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_CurrentFocusEnum_None_Ordinary_Special_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesZ = { "FTransformRotateScaleAxesZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleAxesZ), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesY_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesY = { "FTransformRotateScaleAxesY", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleAxesY), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesY_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesX_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesX = { "FTransformRotateScaleAxesX", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleAxesX), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesX_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesX_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkZ = { "FTransformRotateScaleTickMarkZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleTickMarkZ), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkY_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkY = { "FTransformRotateScaleTickMarkY", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleTickMarkY), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkY_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkX_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkX = { "FTransformRotateScaleTickMarkX", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FTransformRotateScaleTickMarkX), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkX_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkX_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesZ = { "FVectorScaleAxesZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleAxesZ), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesY_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesY = { "FVectorScaleAxesY", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleAxesY), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesY_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesX_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesX = { "FVectorScaleAxesX", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleAxesX), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesX_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesX_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesBase100_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesBase100 = { "FVectorScaleAxesBase100", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleAxesBase100), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesBase100_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesBase100_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxes_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxes = { "FVectorScaleAxes", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleAxes), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxes_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxes_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkZ_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkZ = { "FVectorScaleTickMarkZ", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleTickMarkZ), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkZ_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkZ_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkY_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkY = { "FVectorScaleTickMarkY", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleTickMarkY), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkY_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkY_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkX_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkX = { "FVectorScaleTickMarkX", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleTickMarkX), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkX_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkX_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMark_MetaData[] = {
+		{ "Category", "MultipoleAxesActorComponent" },
+		{ "ModuleRelativePath", "MultipoleAxesActorComponent.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMark = { "FVectorScaleTickMark", nullptr, (EPropertyFlags)0x0010000000020015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMultipoleAxesActorComponent, FVectorScaleTickMark), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMark_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMark_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_TempMultipoleBarCylinders,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_TempMultipoleBarCylinders_Inner,
@@ -2206,8 +2621,29 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_RangeX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedAxes,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_UpdatedChargeArrays,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesValueXYZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_MultipoleAxesEnumXYZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_DefaultRange,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_AbsMaxRangeX,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_GridlinesFlag,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_CurrentFocusEnum_None_Ordinary_Special,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleAxesX,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FTransformRotateScaleTickMarkX,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesX,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxesBase100,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleAxes,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkZ,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkY,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMarkX,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::NewProp_FVectorScaleTickMark,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UMultipoleAxesActorComponent_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UMultipoleAxesActorComponent>::IsAbstract,
@@ -2236,7 +2672,7 @@ void EmptyLinkFunctionForGeneratedCodeMultipoleAxesActorComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UMultipoleAxesActorComponent, 3264855201);
+	IMPLEMENT_CLASS(UMultipoleAxesActorComponent, 2138865570);
 	template<> MULTIPOLEAXESDEMO_API UClass* StaticClass<UMultipoleAxesActorComponent>()
 	{
 		return UMultipoleAxesActorComponent::StaticClass();

@@ -1,0 +1,19 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo).
+  Parsing headers for MultipoleAxesDemoEditor
+    Running UnrealHeaderTool "C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\MultipoleAxesDemo.uproject" "C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\MultipoleAxesDemoEditor\Development\MultipoleAxesDemoEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\sdmoo\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+  Reflection code generated for MultipoleAxesDemoEditor in 8.0057395 seconds
+  Building MultipoleAxesDemoEditor...
+  Using Visual Studio 2019 14.26.28806 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 8 actions with 12 processes...
+    [1/8] MultipoleAxesDemo.init.gen.cpp
+    [2/8] MultipoleDemoActor.cpp
+    [3/8] MultipoleDemoActor.gen.cpp
+    [4/8] MultipoleAxesActorComponent.gen.cpp
+    [5/8] MultipoleAxesActorComponent.cpp
+    [6/8] UE4Editor-MultipoleAxesDemo-0001.lib
+       Creating library C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Development\MultipoleAxesDemo\UE4Editor-MultipoleAxesDemo-0001.lib and object C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Development\MultipoleAxesDemo\UE4Editor-MultipoleAxesDemo-0001.exp
+    [7/8] UE4Editor-MultipoleAxesDemo-0001.dll
+       Creating library C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Development\MultipoleAxesDemo\UE4Editor-MultipoleAxesDemo-0001.suppressed.lib and object C:\Users\sdmoo\OneDrive\Documents\GitHub\UnrealEngineMultipoleDemo\MultipoleAxesDemo\Intermediate\Build\Win64\UE4Editor\Development\MultipoleAxesDemo\UE4Editor-MultipoleAxesDemo-0001.suppressed.exp
+    [8/8] MultipoleAxesDemoEditor.target
+  Total time in Parallel executor: 10.11 seconds
+  Total execution time: 19.02 seconds

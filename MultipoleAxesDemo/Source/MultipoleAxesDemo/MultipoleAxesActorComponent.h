@@ -143,8 +143,14 @@ public:
 	int GetTotalDipoleMoment(int Index0);
 	int GetTotalQuadrupoleMoment(int Index1, int Index0);
 	int GetTotalOctupoleMoment(int Index2, int Index1, int Index0);
+	
 
 };
+//class MonopoleDipoleQuadrupoleBreakdown {
+//	public:
+//		MonopoleDipoleQuadrupoleBreakdown(TMap<FIntVector, int> InputChargeMap);
+//
+//};
 class MultipoleMoment
 {
 public:
@@ -168,7 +174,6 @@ class MULTIPOLEAXESDEMO_API UMultipoleAxesActorComponent : public UActorComponen
 public:
 	// Sets default values for this component's properties
 	UMultipoleAxesActorComponent(const FObjectInitializer& ObjectInitializer);
-
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -196,20 +201,55 @@ public:
 	FTransform GetSphereTransform(FVector StartPosition, float Radius);
 	FTransform GetSphereTransformFromFIntVector(FIntVector Position, int Charge);
 	FTransform GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrder(int Charge, int Order, FIntVector StartCoord, FIntVector EndCoord);
+	FTransform GetCylinderTransformFromMultipoleFIntVectorFIntVectorChargeOrderAxes(int Charge, int Order, FIntVector StartCoord, FIntVector EndCoord);
 	FTransform GetCylinderTransformFromFIntVectorFIntVectorTickMark(FIntVector PositionCoord, FIntVector SingleDisplacement);
 	FTransform GetCylinderTransformFromFIntVectorTickMarkX(FIntVector PositionCoord);
 	FTransform GetCylinderTransformFromFIntVectorTickMarkY(FIntVector PositionCoord);
 	FTransform GetCylinderTransformFromFIntVectorTickMarkZ(FIntVector PositionCoord);
 	FTransform GetCylinderTransformAxes(FIntVector StartCoord, FIntVector EndCoord);
 	FTransform GetCylinderTransformGridLine(FIntVector StartCoord, FIntVector EndCoord);
-	//MultipoleMoment GetMultipoleMoment(MultipoleMap& MultipoleMapInput);
+	int OutputEnumEdge(int x0, int y0, int z0);
+	UFUNCTION(BlueprintCallable, Category = "MultipoleCustom")
+		TMap<FIntVector, int> GetChargeArrayCurrentBP();
+	UFUNCTION(BlueprintCallable, Category = "MultipoleCustom")
+		int UpdateMaximumRangeValuesBP();
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleTickMark;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleTickMarkX;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleTickMarkY;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleTickMarkZ;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleAxes;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleAxesBase100;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleAxesX;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleAxesY;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FVector FVectorScaleAxesZ;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleTickMarkX;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleTickMarkY;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleTickMarkZ;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleAxesX;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleAxesY;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		FTransform FTransformRotateScaleAxesZ;
 	UFUNCTION(BlueprintCallable, Category = "FxnGetMultipoleMoments")
 		int GetIfChangedCartesianMultipoleMoment(TArray<int>& InputTArrray);
 	UFUNCTION(BlueprintCallable, Category = "FxnGetMultipoleMoments")
 		int GetCurrentCartesianMultipoleMoment(TArray<int>& InputTArrray);
 	UFUNCTION(BlueprintCallable, Category = "FxnGetMultipoleMoments")
 		int GetAddedOffsetCartesianMultipoleMoment(TArray<int>& InputTArrray);
-
+	
 	UFUNCTION(BlueprintCallable, Category = "FxnGetMultipoleMoments")
 		FIntPoint GetIfChangedSphericalMultipoleMomentCoefficient(int InputL, int InputM);
 	UFUNCTION(BlueprintCallable, Category = "FxnGetMultipoleMoments")
@@ -278,6 +318,8 @@ public:
 		int ChangeSpacing(float InputSpacing);
 	UFUNCTION(BlueprintCallable, Category = "MyCategory")
 		int UpdateAxes();
+	UFUNCTION(BlueprintCallable, Category = "MyCategory")
+		int UpdateAxesDifferent();
 	FVector GetVector(FIntVector InputVectorFIntVector);
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -286,8 +328,8 @@ public:
 		int MouseButtonEventProcess(bool ButtonUpFlagInput, bool SpecialButtonFlagInput);
 	UFUNCTION(BlueprintCallable, Category = "MyCategory")
 		int MovementEventProcess(int x0, int y0, int z0);
-	//UFUNCTION(BlueprintCallable, Category = "MyCategory")
-	//	int InputCheck(bool OrdinaryButtonUpFlagInput, bool SpecialButtonUpFlagInput, int x0, int y0, int z0);
+	UFUNCTION(BlueprintCallable, Category = "MyCategory")
+		int SetNewAxisOffset(int InputEnumXYZ, int InputValueXYZ);
 	class MultipoleLocationMap MultipoleSetup;
 	class MultipoleLocationMap MultipoleSetupToAdd;
 	class MultipoleLocationMap MultipoleSetupToOffset;
@@ -296,28 +338,40 @@ public:
 	MultipoleLocationMap GetNewToAdd(bool ClickUp, bool SpecialButton, FIntVector  CurrentPositionInput, FIntVector DownClickPositionInput);
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 		bool GridlinesFlag;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int AbsMaxRangeX;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int AbsMaxRangeY;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int AbsMaxRangeZ;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int DefaultRange;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int MultipoleAxesEnumXYZ;
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+		int MultipoleAxesValueXYZ;
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 		bool UpdatedChargeArrays;
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 		bool UpdatedAxes;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		int RangeX = 5;
+		int RangeX;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		int RangeY = 0;
+		int RangeY;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		int RangeZ = 5;
+		int RangeZ;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float Spacing = 100.0;
+		float Spacing;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float TickMarkProportion = 0.4;
+		float TickMarkProportion;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float TickMarkRadiusProportion = 0.05;
+		float TickMarkRadiusProportion;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float AxesRadiusProportion = 0.1;
+		float AxesRadiusProportion;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float RadiusPerUnitChargeProportion = 0.3;
+		float RadiusPerUnitChargeProportion;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
-		float RadiusPerUnitMultipoleProportion = 0.15;
+		float RadiusPerUnitMultipoleProportion;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 		TArray<FTransform> PositiveChargeSpheres;
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
@@ -347,4 +401,28 @@ public:
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 		TArray<FTransform> TempMultipoleBarCylinders;
 
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapPositiveChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapNegativeChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapMultipoleBarCylinders;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapAddPositiveChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapAddNegativeChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapAddMultipoleBarCylinders;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapOffsetPositiveChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapOffsetNegativeChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapOffsetMultipoleBarCylinders;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapTempPositiveChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapTempNegativeChargeSpheres;
+	//UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	//	TMap<FTransform, int> MapTempMultipoleBarCylinders;
 };
